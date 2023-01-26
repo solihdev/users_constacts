@@ -19,9 +19,27 @@ class GetContactCubit extends Cubit<GetContactsState> {
     );
   }
 
+  addContact(ContactModel newContact) async {
+    await contactsRepo.addContact(newContact);
+    var result = await contactsRepo.getContact();
+    emit(GetContactsSuccess(
+      contactModel: result.map((e) => ContactModel.fromJson(e)).toList(),
+    ));
+  }
+
+  updateContact(ContactModel newContact) async {
+    await contactsRepo.updateContact(newContact);
+    var result = await contactsRepo.getContact();
+    emit(GetContactsSuccess(
+      contactModel: result.map((e) => ContactModel.fromJson(e)).toList(),
+    ));
+  }
+
   deleteContact(int id) async {
     await contactsRepo.deleteContact(id);
     var result = await contactsRepo.getContact();
-    emit(GetContactsSuccess(contactModel: result.map((e) => ContactModel.fromJson(e)).toList(),));
+    emit(GetContactsSuccess(
+      contactModel: result.map((e) => ContactModel.fromJson(e)).toList(),
+    ));
   }
 }
