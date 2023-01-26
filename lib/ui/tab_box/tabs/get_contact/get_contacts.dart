@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:user_contacts_with_bloc/bloc/contacts_bloc/contacts_bloc.dart';
-import 'package:user_contacts_with_bloc/bloc/get_contacts/get_contacts_cubit.dart';
-import 'package:user_contacts_with_bloc/bloc/get_contacts/get_contacts_state.dart';
+import 'package:user_contacts_with_bloc/cubit/get_contacts/get_contacts_cubit.dart';
+import 'package:user_contacts_with_bloc/cubit/get_contacts/get_contacts_state.dart';
 
 class GetContactsScreen extends StatelessWidget {
   const GetContactsScreen({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class GetContactsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Get Contacts"),
       ),
-      body: BlocConsumer<GetContactCubit, GetContactsState>(
+      body: BlocBuilder<GetContactCubit, GetContactsState>(
         builder: (context, state) {
           if (state is GetContactsLoading) {
             return const Center(
@@ -27,16 +26,14 @@ class GetContactsScreen extends StatelessWidget {
                 return ListTile(
                   title: Text(item.name),
                   subtitle: Text(item.number),
+                  trailing:  IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: (){},
+                  ),
                   leading: IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
-                      BlocProvider.of<ContactsBloc>(context).add(
-                        DeleteContact(
-                          contactId: int.parse(
-                            item.id.toString(),
-                          ),
-                        ),
-                      );
+                      context.read<GetContactCubit>().deleteContact(item.id!);
                     },
                   ),
                 );
@@ -44,9 +41,6 @@ class GetContactsScreen extends StatelessWidget {
             );
           }
           return const SizedBox();
-        },
-        listener: (context,state){
-          // BlocProvider.of<GetContactCubit>(context).fetchContacts();
         },
       ),
     );
