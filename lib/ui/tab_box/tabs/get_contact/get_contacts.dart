@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_contacts_with_bloc/cubit/get_contacts/get_contacts_cubit.dart';
 import 'package:user_contacts_with_bloc/cubit/get_contacts/get_contacts_state.dart';
+import 'package:user_contacts_with_bloc/ui/tab_box/tabs/widgets/update_widget.dart';
 
 class GetContactsScreen extends StatelessWidget {
   const GetContactsScreen({Key? key}) : super(key: key);
@@ -28,7 +29,9 @@ class GetContactsScreen extends StatelessWidget {
                   subtitle: Text(item.number),
                   trailing:  IconButton(
                     icon: const Icon(Icons.edit),
-                    onPressed: (){},
+                    onPressed: (){
+                      showDialog(context: context, builder: (context) => UpdateContactDialog(contactModel: item),);
+                    },
                   ),
                   leading: IconButton(
                     icon: const Icon(Icons.delete),
