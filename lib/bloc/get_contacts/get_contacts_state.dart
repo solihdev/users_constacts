@@ -1,4 +1,4 @@
-import 'package:users_contacts/data/models/contact_model.dart';
+import 'package:user_contacts_with_bloc/data/models/contact_model.dart';
 
 abstract class GetContactsState {}
 

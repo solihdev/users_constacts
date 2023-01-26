@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:users_contacts/bloc/contacts_bloc/contacts_bloc.dart';
-import 'package:users_contacts/bloc/get_contacts/get_contacts_cubit.dart';
-import 'package:users_contacts/data/models/contact_model.dart';
+import 'package:user_contacts_with_bloc/bloc/contacts_bloc/contacts_bloc.dart';
+import 'package:user_contacts_with_bloc/bloc/get_contacts/get_contacts_cubit.dart';
+import 'package:user_contacts_with_bloc/data/models/contact_model.dart';
 
 class AddContactScreen extends StatelessWidget {
   AddContactScreen({Key? key}) : super(key: key);

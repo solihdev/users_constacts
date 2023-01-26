@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:users_contacts/ui/tab_box/tabs/add_contact/add_contact.dart';
-
+import 'package:user_contacts_with_bloc/ui/tab_box/tabs/add_contact/add_contact.dart';
 import 'tabs/get_contact/get_contacts.dart';
 
 class TabScreen extends StatefulWidget {

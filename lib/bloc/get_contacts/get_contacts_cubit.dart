@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:users_contacts/bloc/get_contacts/get_contacts_state.dart';
-import 'package:users_contacts/data/models/contact_model.dart';
-import 'package:users_contacts/data/repositories/contacts_repo.dart';
+import 'package:user_contacts_with_bloc/bloc/get_contacts/get_contacts_state.dart';
+import 'package:user_contacts_with_bloc/data/models/contact_model.dart';
+import 'package:user_contacts_with_bloc/data/repositories/contacts_repo.dart';
 
 class GetContactCubit extends Cubit<GetContactsState> {
   final ContactsRepo contactsRepo;
